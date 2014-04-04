@@ -11,6 +11,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
+  this.addRandomTile();
 }
 
 // Restart the game
@@ -171,6 +172,7 @@ GameManager.prototype.move = function (direction) {
           self.score += merged.value;
 
           // The mighty 2048 tile
+          merged.value = 2048;
           if (merged.value === 2048) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
